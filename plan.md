@@ -20,6 +20,7 @@ A premium single-page marketing website for CJ Design, a modern website studio o
 ## Implementation approach
 - Static HTML/CSS/JS served by a tiny Node HTTP server on port 3000.
 - Keep the application dependency-free for reliable preview and simple static deployment.
+- Support an accessible dark/light theme toggle with a dark default and localStorage persistence.
 - Use the uploaded logo at `/manus-storage/ChatGPTImageSep30,2026,04_35_50PM_d9705b1a.png`.
 - Use a Gmail compose URL form handoff so enquiries open a Gmail composition addressed to `cjaydesign063@gmail.com`, with direct Gmail and Instagram links throughout.
 - Include an honest, testimonial-ready trust section: show the outcomes the experience is designed to earn, and clearly reserve verified client quotes for approved future proof.

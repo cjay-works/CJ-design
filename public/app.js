@@ -4,6 +4,23 @@ const siteHeader = document.querySelector('.site-header');
 const cursorGlow = document.querySelector('.cursor-glow');
 const toast = document.querySelector('.toast');
 const enquiryForm = document.querySelector('#enquiry-form');
+const themeToggle = document.querySelector('.theme-toggle');
+const root = document.documentElement;
+
+function syncThemeControl() {
+  const isLight = root.dataset.theme === 'light';
+  themeToggle?.setAttribute('aria-pressed', String(isLight));
+  themeToggle?.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+  if (themeToggle) themeToggle.title = isLight ? 'Switch to dark mode' : 'Switch to light mode';
+}
+
+syncThemeControl();
+
+themeToggle?.addEventListener('click', () => {
+  root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+  localStorage.setItem('cj-theme', root.dataset.theme);
+  syncThemeControl();
+});
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
