@@ -1,0 +1,10 @@
+{
+  "name": "cjaydesign",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium CJ Design company website",
+  "scripts": {
+    "start": "node server.js",
+    "build": "rm -rf dist && mkdir -p dist && cp -R public/. dist/"
+  }
+}
