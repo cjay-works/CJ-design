@@ -78,8 +78,11 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .orb-label { position: absolute; color: #9bdce8; font-size: 9px; line-height: 1.5; letter-spacing: .16em; }
 .orb-label-top { top: 13%; left: 11%; }
 .orb-label-bottom { bottom: 11%; right: 5%; text-align: right; color: #687c99; }
-.art-stamp { position: absolute; bottom: 31px; left: 15px; color: var(--cyan); font-size: 11px; letter-spacing: .3em; }
-.art-stamp span { margin: 0 10px; color: #5978ff; }
+.art-stamp { position: absolute; bottom: 31px; left: 15px; display: flex; align-items: center; gap: 9px; color: var(--cyan); font-size: 11px; letter-spacing: .3em; }
+.art-stamp > span { margin: 0; }
+.stamp-logo { display: grid; place-items: center; width: 19px; height: 19px; overflow: hidden; border: 1px solid rgba(49,217,239,.45); border-radius: 6px; background: rgba(49,217,239,.08); }
+.stamp-logo img { width: 125%; height: 125%; object-fit: cover; mix-blend-mode: screen; }
+.stamp-name { color: var(--cyan); }
 .hero-scroll { position: absolute; bottom: 20px; left: 0; display: flex; align-items: center; gap: 16px; color: #5f6e82; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; }
 .hero-scroll i { display: inline-block; width: 56px; height: 1px; background: var(--line-strong); position: relative; }
 .hero-scroll i::after { content: ''; position: absolute; right: 0; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); }
