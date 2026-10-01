@@ -69,9 +69,9 @@ if (enquiryForm) {
       '',
       message || 'I would like to discuss a website project.'
     ].join('\n');
-    showToast('Opening your email app with the enquiry…');
+    showToast('Opening Gmail compose with the enquiry…');
     window.setTimeout(() => {
-      window.location.href = `mailto:cjaydesign063@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=cjaydesign063@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }, 250);
   });
 }
