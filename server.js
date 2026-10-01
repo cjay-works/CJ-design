@@ -250,7 +250,7 @@ function serveStatic(req, res) {
   });
 }
 
-const server = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
   const pathname = (req.url || '/').split('?')[0];
   if (pathname === '/api/leads') {
     handleLead(req, res).catch((error) => {
@@ -268,10 +268,18 @@ const server = http.createServer((req, res) => {
     return;
   }
   serveStatic(req, res);
-});
+};
 
-initDatabase().finally(() => {
-  server.listen(port, '0.0.0.0', () => {
-    console.log(`CJ Design server listening on http://0.0.0.0:${port}`);
+if (process.env.VERCEL) {
+  module.exports = async (req, res) => {
+    await initDatabase();
+    requestHandler(req, res);
+  };
+} else {
+  const server = http.createServer(requestHandler);
+  initDatabase().finally(() => {
+    server.listen(port, '0.0.0.0', () => {
+      console.log(`CJ Design server listening on http://0.0.0.0:${port}`);
+    });
   });
-});
+}

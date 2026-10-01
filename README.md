@@ -8,6 +8,7 @@ CJ Design creates modern, conversion-focused websites for ambitious local busine
 
 - **Live website:** https://cjaydesign-qmuqbvus.manus.space/
 - **Preview:** https://3000-ixe1o2kcozcw4hwl5ujqo-e59f67b4.sg2.manus.computer/
+- **Vercel deployment:** https://cj-design.vercel.app/
 - **Email:** cjaydesign063@gmail.com
 - **Instagram:** https://www.instagram.com/cj_design00/?hl=en
 
@@ -118,6 +119,7 @@ The goal is not simply to put pages online. It is to make the right next step fe
 │   │   └── ChatGPTImageSep30,2026,04_35_50PM_d9705b1a.png
 │   └── styles.css
 ├── server.js
+├── vercel.json
 └── package-lock.json
 ```
 
@@ -152,6 +154,12 @@ The contact form sends validated JSON to `POST /api/leads`. The server creates t
 After a successful save, the browser opens a Gmail compose window addressed to `cjaydesign063@gmail.com` so the visitor can send a direct follow-up. The server also attempts a project-owner notification through the managed runtime. Direct server-to-Gmail delivery requires an enabled Gmail provider/connector; the current implementation does not expose credentials in the browser.
 
 The server exposes `GET /health` for deployment readiness.
+
+## Vercel deployment
+
+The GitHub `main` branch is connected to the Vercel project `cj-design`, so pushes to `main` trigger a new deployment automatically. The `vercel.json` entrypoint runs the Node server as a Vercel function while preserving the same static site routes.
+
+For the lead API to persist data on Vercel, configure the server-side `DATABASE_URL`, `MANUS_API_URL`, and `MANUS_API_KEY` environment variables in the Vercel project. Do not expose these values in browser code or commit them to Git.
 
 ## Enquiries
 
