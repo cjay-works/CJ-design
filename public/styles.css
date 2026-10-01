@@ -133,6 +133,21 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .process-step h3 { margin: 0 0 12px; font-size: 23px; font-weight: 500; }
 .process-step p { max-width: 210px; margin: 0; color: #7f8c9e; font-size: 12px; line-height: 1.6; }
 
+.trust { display: grid; grid-template-columns: .78fr 1.22fr; gap: 80px; border-top: 1px solid var(--line); }
+.trust-heading h2 { margin: 0; font-size: clamp(48px, 5.4vw, 70px); line-height: .96; letter-spacing: -.065em; font-weight: 600; }
+.trust-heading > p:not(.eyebrow) { max-width: 320px; margin: 29px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.trust-quotes { display: grid; gap: 12px; }
+.quote-card { position: relative; display: grid; grid-template-columns: 54px 1fr; gap: 15px; min-height: 142px; padding: 22px 25px; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(110deg, rgba(20,31,49,.74), rgba(11,18,30,.8)); transition: transform .35s var(--ease), border-color .35s ease, background .35s ease; }
+.quote-card:hover { transform: translateX(7px); border-color: rgba(49,217,239,.4); background: linear-gradient(110deg, rgba(29,57,72,.75), rgba(11,18,30,.85)); }
+.quote-card-featured { border-color: rgba(49,217,239,.38); background: radial-gradient(circle at 0% 50%, rgba(49,217,239,.13), transparent 48%), linear-gradient(110deg, rgba(20,53,65,.75), rgba(11,18,30,.85)); }
+.quote-mark { color: var(--cyan); font-family: Georgia, serif; font-size: 58px; line-height: .8; }
+.quote-card blockquote { max-width: 470px; margin: 0; align-self: start; color: #ecf3f7; font-size: 20px; line-height: 1.2; letter-spacing: -.035em; }
+.quote-meta { grid-column: 2; display: flex; align-items: end; justify-content: space-between; gap: 15px; align-self: end; }
+.quote-meta span { color: var(--cyan); font-size: 9px; letter-spacing: .16em; }
+.quote-meta small { color: #728197; font-size: 9px; }
+.trust-note { grid-column: 2; max-width: 520px; margin: -40px 0 0 69px; color: #738196; font-size: 10px; line-height: 1.6; }
+.trust-note span { margin-right: 8px; color: var(--cyan); text-transform: uppercase; letter-spacing: .14em; }
+
 .packages { border-top: 1px solid var(--line); }
 .packages-intro { display: flex; justify-content: space-between; align-items: end; gap: 50px; }
 .packages-intro > p { max-width: 300px; margin-bottom: 3px; }
@@ -222,6 +237,8 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
   .orbital-orb { width: min(80vw, 510px); height: min(80vw, 510px); }
   .hero-scroll { display: none; }
   .intro, .growth, .contact { grid-template-columns: 1fr; gap: 60px; }
+  .trust { grid-template-columns: 1fr; gap: 55px; }
+  .trust-note { grid-column: 1; margin: -25px 0 0; }
   .growth-visual { order: 2; min-height: 450px; }
   .growth-copy { order: 1; }
   .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 44px; }
@@ -252,6 +269,11 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
   .service-tag { display: none; }
   .section-heading h2, .growth-copy h2, .packages-intro h2, .contact-copy h2 { font-size: 54px; }
   .growth-visual { min-height: 380px; }
+  .trust { gap: 40px; }
+  .quote-card { grid-template-columns: 38px 1fr; min-height: 150px; padding: 19px; }
+  .quote-mark { font-size: 47px; }
+  .quote-card blockquote { font-size: 18px; }
+  .quote-meta { grid-column: 2; display: grid; gap: 5px; }
   .growth-card-main { width: 235px; min-height: 290px; padding: 23px; }
   .growth-card-main strong { font-size: 39px; }
   .growth-card-float { right: 0; bottom: 7%; }
