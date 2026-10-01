@@ -94,6 +94,10 @@ The goal is not simply to put pages online. It is to make the right next step fe
 - Direct Gmail and Instagram CTAs
 - Testimonial-ready trust section that avoids fabricated endorsements
 - Browser favicon and Apple touch icon
+- Backend lead capture through `POST /api/leads`
+- Managed MySQL persistence for submitted enquiries
+- Server-side validation, honeypot protection, and IP-based rate limiting
+- Project-owner notification attempt for new leads
 - Managed route manifest at `/manus-routes.json`
 
 ## Project structure
@@ -101,6 +105,8 @@ The goal is not simply to put pages online. It is to make the right next step fe
 ```text
 .
 ├── app.config.ts
+├── Dockerfile
+├── README.md
 ├── package.json
 ├── plan.md
 ├── presentation-script.md
@@ -111,7 +117,8 @@ The goal is not simply to put pages online. It is to make the right next step fe
 │   ├── manus-storage/
 │   │   └── ChatGPTImageSep30,2026,04_35_50PM_d9705b1a.png
 │   └── styles.css
-└── server.js
+├── server.js
+└── package-lock.json
 ```
 
 ## Run locally
@@ -137,6 +144,14 @@ npm run build
 ```
 
 The generated static site is written to `dist/`.
+
+## Lead-generation backend
+
+The contact form sends validated JSON to `POST /api/leads`. The server creates the managed MySQL `leads` table if needed and stores each enquiry with its name, email, website type, message, timestamp, and status. A server-side honeypot and rate limit help reduce automated submissions.
+
+After a successful save, the browser opens a Gmail compose window addressed to `cjaydesign063@gmail.com` so the visitor can send a direct follow-up. The server also attempts a project-owner notification through the managed runtime. Direct server-to-Gmail delivery requires an enabled Gmail provider/connector; the current implementation does not expose credentials in the browser.
+
+The server exposes `GET /health` for deployment readiness.
 
 ## Enquiries
 

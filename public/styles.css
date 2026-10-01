@@ -218,7 +218,7 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .contact-direct strong { font-size: 13px; font-weight: 500; }
 .contact-direct b { color: var(--cyan); font-size: 17px; font-weight: 400; }
 .contact-direct a:hover strong { color: var(--cyan); }
-.contact-form { display: grid; gap: 22px; padding: 30px; border: 1px solid rgba(152,190,223,.23); border-radius: 17px; background: rgba(17,27,43,.65); box-shadow: 0 25px 70px rgba(0,0,0,.18); }
+.contact-form { position: relative; display: grid; gap: 22px; padding: 30px; border: 1px solid rgba(152,190,223,.23); border-radius: 17px; background: rgba(17,27,43,.65); box-shadow: 0 25px 70px rgba(0,0,0,.18); }
 .form-heading { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .form-heading span { color: var(--cyan); font-size: 9px; letter-spacing: .19em; }
 .form-heading small { color: #75859a; font-size: 9px; }
@@ -230,7 +230,9 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .contact-form option { color: var(--ink); }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--cyan); }
 .form-submit { width: fit-content; margin-top: 5px; border: 0; }
+.form-submit:disabled { cursor: wait; opacity: .65; transform: none; }
 .form-footnote { margin: -7px 0 0; color: #68788c; font-size: 10px; }
+.form-honeypot { position: absolute !important; left: -10000px !important; top: auto !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 
 .site-footer { display: flex; align-items: center; gap: 30px; padding-block: 23px 30px; border-top: 1px solid var(--line); color: #677588; font-size: 10px; }
 .footer-brand { display: flex; align-items: center; gap: 9px; color: var(--text); font-size: 11px; letter-spacing: .14em; }

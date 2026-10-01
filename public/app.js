@@ -71,13 +71,14 @@ function showToast(message) {
 }
 
 if (enquiryForm) {
-  enquiryForm.addEventListener('submit', (event) => {
+  enquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(enquiryForm);
     const name = String(formData.get('name') || '').trim();
     const email = String(formData.get('email') || '').trim();
     const business = String(formData.get('business') || '').trim();
     const message = String(formData.get('message') || '').trim();
+    const website = String(formData.get('website') || '').trim();
     const subject = `Website enquiry from ${name}`;
     const body = [
       `Name: ${name}`,
@@ -86,9 +87,36 @@ if (enquiryForm) {
       '',
       message || 'I would like to discuss a website project.'
     ].join('\n');
-    showToast('Opening Gmail compose with the enquiry…');
-    window.setTimeout(() => {
-      window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=cjaydesign063@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }, 250);
+
+    const submitButton = enquiryForm.querySelector('.form-submit');
+    const originalLabel = submitButton?.innerHTML;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Saving enquiry…';
+    }
+    showToast('Saving your enquiry securely…');
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, business, message, website }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.error || 'We could not save your enquiry.');
+
+      enquiryForm.reset();
+      showToast('Enquiry saved — opening Gmail compose…');
+      window.setTimeout(() => {
+        window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=cjaydesign063@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }, 450);
+    } catch (error) {
+      showToast(error.message || 'Please email cjaydesign063@gmail.com directly.');
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalLabel;
+      }
+    }
   });
 }

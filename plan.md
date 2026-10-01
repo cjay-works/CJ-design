@@ -24,12 +24,15 @@ A premium single-page marketing website for CJ Design, a modern website studio o
 - Use the uploaded logo at `/manus-storage/ChatGPTImageSep30,2026,04_35_50PM_d9705b1a.png`.
 - Use a Gmail compose URL form handoff so enquiries open a Gmail composition addressed to `cjaydesign063@gmail.com`, with direct Gmail and Instagram links throughout.
 - Include an honest, testimonial-ready trust section: show the outcomes the experience is designed to earn, and clearly reserve verified client quotes for approved future proof.
+- Persist contact-form leads in a managed MySQL `leads` table through `POST /api/leads`, with server-side validation, a honeypot, rate limiting, and project-owner notifications; the browser retains Gmail compose as a direct follow-up fallback.
 - Provide `public/manus-routes.json` with the single `/` route.
 
 ## Project structure
 - `public/index.html` — page structure, copy, service/pricing content, contact UI.
 - `public/styles.css` — design tokens, responsive layout, floating motion, hover/reveal states.
 - `public/app.js` — scroll reveal, pointer parallax, nav state, menu toggle, form-to-Gmail-compose behavior.
+- `server.js` — static serving, `/api/leads` persistence and notifications, and `/health` readiness endpoint.
+- `Dockerfile` — production container for the server-enabled deployment.
 - `public/manus-routes.json` — managed route manifest.
 - `server.js` — dependency-free static file server.
 - `app.config.ts` — platform logo metadata.
