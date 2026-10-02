@@ -7,6 +7,10 @@ const enquiryForm = document.querySelector('#enquiry-form');
 const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
 
+if (window.emailjs) {
+  emailjs.init({ publicKey: 'hF50q5PxQvepS9lLE' });
+}
+
 function syncThemeControl() {
   const isLight = root.dataset.theme === 'light';
   themeToggle?.setAttribute('aria-pressed', String(isLight));
@@ -73,45 +77,23 @@ function showToast(message) {
 if (enquiryForm) {
   enquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(enquiryForm);
-    const name = String(formData.get('name') || '').trim();
-    const email = String(formData.get('email') || '').trim();
-    const business = String(formData.get('business') || '').trim();
-    const message = String(formData.get('message') || '').trim();
-    const website = String(formData.get('website') || '').trim();
-    const subject = `Website enquiry from ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Reply email: ${email}`,
-      `Website type: ${business}`,
-      '',
-      message || 'I would like to discuss a website project.'
-    ].join('\n');
-
     const submitButton = enquiryForm.querySelector('.form-submit');
     const originalLabel = submitButton?.innerHTML;
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.innerHTML = 'Saving enquiry…';
+      submitButton.innerHTML = 'Sending enquiry…';
     }
-    showToast('Saving your enquiry securely…');
+    showToast('Sending your enquiry…');
 
     try {
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, business, message, website }),
-      });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok || !result.ok) throw new Error(result.error || 'We could not save your enquiry.');
+      if (!window.emailjs) throw new Error('Email service unavailable.');
+      await emailjs.sendForm('service_ki4cy8e', 'template_x6cj49w', enquiryForm);
 
       enquiryForm.reset();
-      showToast('Enquiry saved — opening Gmail compose…');
-      window.setTimeout(() => {
-        window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=cjaydesign063@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      }, 450);
+      showToast("Thanks! Your enquiry has been sent successfully. We'll get back to you soon.");
     } catch (error) {
-      showToast(error.message || 'Please email cjaydesign063@gmail.com directly.');
+      console.error('EmailJS enquiry error:', error);
+      showToast('Something went wrong while sending your enquiry. Please try again or email cjaydesign063@gmail.com directly.');
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
