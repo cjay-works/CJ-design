@@ -192,7 +192,11 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .price-card li::marker { color: var(--cyan); }
 .maintenance { margin-top: auto; padding: 14px 0; color: #76869a; font-size: 10px; border-top: 1px solid var(--line); }
 .maintenance strong { display: block; margin-top: 5px; color: var(--text); font-size: 11px; font-weight: 500; }
+.card-actions { display: grid; gap: 8px; margin-top: 9px; }
 .card-link { display: flex; justify-content: space-between; align-items: center; margin-top: 9px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--cyan); font-size: 11px; }
+.card-actions .card-link { margin-top: 0; }
+.sample-link { justify-content: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--cyan); border-radius: 999px; background: var(--cyan); color: #06121b; font-weight: 600; letter-spacing: .02em; }
+.sample-link:hover { border-color: var(--cyan-soft); background: var(--cyan-soft); color: #06121b; }
 .card-link span { transition: transform .25s var(--ease); }
 .card-link:hover span { transform: translate(3px, -3px); }
 .price-card-wide { grid-column: 1 / -1; min-height: auto; }
@@ -252,6 +256,7 @@ html[data-theme="light"] .growth-card-main { border-color: rgba(24,105,137,.28);
 html[data-theme="light"] .growth-card-float { background: rgba(255,255,255,.9); box-shadow: 0 15px 35px rgba(30,82,112,.14); }
 html[data-theme="light"] .price-card { background: linear-gradient(150deg, rgba(255,255,255,.96), rgba(237,244,249,.96)); box-shadow: 0 14px 35px rgba(30,82,112,.07); }
 html[data-theme="light"] .price-card-featured { background: radial-gradient(circle at 50% 0%, rgba(49,217,239,.16), transparent 45%), linear-gradient(150deg, rgba(224,248,250,.94), rgba(241,248,250,.98)); }
+html[data-theme="light"] .sample-link { background: var(--cyan); border-color: var(--cyan); color: #06121b; }
 html[data-theme="light"] .contact-form { background: rgba(255,255,255,.9); box-shadow: 0 25px 70px rgba(30,82,112,.1); }
 html[data-theme="light"] .included { background: linear-gradient(95deg, rgba(220,246,248,.72), rgba(242,248,251,.9)); }
 html[data-theme="light"] .quote-card { background: linear-gradient(110deg, rgba(255,255,255,.95), rgba(237,245,249,.95)); }

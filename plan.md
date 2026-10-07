@@ -1,7 +1,7 @@
 # CJ Design Website Plan
 
 ## Product scope
-A premium single-page marketing website for CJ Design, a modern website studio offering customer landing pages, portfolio websites, real estate websites, e-commerce websites, gym studio websites, restaurant websites, and financial advisor websites. The page must present exact pricing, explain business growth outcomes, and drive enquiries through Gmail, Instagram, WhatsApp-oriented CTAs, and a responsive contact form UI. It intentionally does not offer SaaS products.
+A premium single-page marketing website for CJ Design, a modern website studio offering customer landing pages, portfolio websites, real estate websites, e-commerce websites, gym studio websites, restaurant websites, financial advisor websites, and one-on-one/personal brand websites. The page must present exact pricing, explain business growth outcomes, and drive enquiries through Gmail, Instagram, WhatsApp-oriented CTAs, and a responsive contact form UI. It intentionally does not offer SaaS products.
 
 ## Design direction
 - **Design movement:** Editorial luxury digital atelier — dark cinematic surfaces, electric cyan accents, large confident typography, and a restrained art-directed composition rather than a generic SaaS dashboard.
