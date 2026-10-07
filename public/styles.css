@@ -192,6 +192,11 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .price-card li::marker { color: var(--cyan); }
 .maintenance { margin-top: auto; padding: 14px 0; color: #76869a; font-size: 10px; border-top: 1px solid var(--line); }
 .maintenance strong { display: block; margin-top: 5px; color: var(--text); font-size: 11px; font-weight: 500; }
+.sample-choice { display: grid; gap: 3px; margin-top: 14px; color: var(--text); font-size: 11px; font-weight: 600; }
+.sample-choice small { color: #76869a; font-size: 9px; font-weight: 400; letter-spacing: .02em; }
+.sample-picker { display: grid; gap: 8px; margin-top: 9px; }
+.sample-picker-options { display: grid; gap: 8px; }
+.sample-picker-toggle { width: 100%; margin: 0; border: 1px solid var(--cyan); cursor: pointer; }
 .card-actions { display: grid; gap: 8px; margin-top: 9px; }
 .card-link { display: flex; justify-content: space-between; align-items: center; margin-top: 9px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--cyan); font-size: 11px; }
 .card-actions .card-link { margin-top: 0; }

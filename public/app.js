@@ -51,6 +51,18 @@ if (menuButton) {
   });
 }
 
+document.querySelectorAll('.sample-picker-toggle').forEach((button) => {
+  button.addEventListener('click', () => {
+    const picker = button.closest('.sample-picker');
+    const options = picker?.querySelector('.sample-picker-options');
+    if (!options) return;
+    const isOpen = !options.hidden;
+    options.hidden = isOpen;
+    button.setAttribute('aria-expanded', String(!isOpen));
+    button.querySelector('span').textContent = isOpen ? '↕' : '↟';
+  });
+});
+
 if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
   window.addEventListener('pointermove', (event) => {
     cursorGlow.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
