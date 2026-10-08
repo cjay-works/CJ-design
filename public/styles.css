@@ -259,6 +259,11 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--cyan); }
 .floating-whatsapp svg { fill: #fff; }
 .floating-gmail { background: #fff; }
 .floating-gmail img { width: 26px; height: 26px; display: block; }
+.home-fab { position: fixed; left: 22px; bottom: 22px; z-index: 35; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid rgba(49,217,239,.5); border-radius: 50%; color: #06121b; background: var(--cyan); box-shadow: 0 12px 30px rgba(0,0,0,.28); opacity: 0; visibility: hidden; transform: translateY(12px); pointer-events: none; transition: opacity .25s ease, visibility .25s ease, transform .25s var(--ease), box-shadow .25s ease; }
+.home-fab.is-visible { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+.home-fab:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 18px 34px rgba(0,0,0,.35); }
+.home-fab:focus-visible { outline: 2px solid var(--cyan-soft); outline-offset: 4px; }
+.home-fab svg { width: 20px; height: 20px; fill: currentColor; }
 .toast { position: fixed; left: 50%; bottom: 24px; z-index: 20; padding: 12px 17px; border: 1px solid rgba(49,217,239,.4); border-radius: 8px; color: var(--cyan-soft); background: rgba(10, 20, 34, .9); font-size: 11px; transform: translate(-50%, 130%); opacity: 0; transition: transform .35s var(--ease), opacity .35s ease; }
 .toast.show { transform: translate(-50%, 0); opacity: 1; }
 
@@ -369,6 +374,7 @@ html[data-theme="light"] .site-header.menu-open .desktop-nav { background: rgba(
   .floating-contact { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); z-index: 50; gap: 8px; }
   .floating-contact-link { width: 48px; height: 48px; touch-action: manipulation; }
   .floating-contact-link svg { width: 22px; height: 22px; }
+  .home-fab { left: max(14px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); width: 46px; height: 46px; touch-action: manipulation; }
   .cursor-glow { display: none; }
 }
 
@@ -403,6 +409,7 @@ html[data-theme="light"] .site-header.menu-open .desktop-nav { background: rgba(
   .form-heading { display: grid; gap: 8px; }
   .floating-contact { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); z-index: 50; }
   .floating-contact-link { width: 48px; height: 48px; touch-action: manipulation; }
+  .home-fab { left: max(14px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); width: 46px; height: 46px; touch-action: manipulation; }
 }
 
 @media (prefers-reduced-motion: reduce) {

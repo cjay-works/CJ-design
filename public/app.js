@@ -6,6 +6,7 @@ const toast = document.querySelector('.toast');
 const enquiryForm = document.querySelector('#enquiry-form');
 const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
+const homeButton = document.querySelector('.home-fab');
 
 function syncMenuControl(isOpen) {
   if (!menuButton) return;
@@ -26,6 +27,13 @@ function syncThemeControl() {
 }
 
 syncThemeControl();
+
+function syncHomeButton() {
+  homeButton?.classList.toggle('is-visible', window.scrollY > 520);
+}
+
+syncHomeButton();
+window.addEventListener('scroll', syncHomeButton, { passive: true });
 
 themeToggle?.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
