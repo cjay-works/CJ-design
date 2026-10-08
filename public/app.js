@@ -7,6 +7,13 @@ const enquiryForm = document.querySelector('#enquiry-form');
 const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
 
+function syncMenuControl(isOpen) {
+  if (!menuButton) return;
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  menuButton.title = isOpen ? 'Close menu' : 'Open menu';
+}
+
 if (window.emailjs) {
   emailjs.init({ publicKey: 'hF50q5PxQvepS9lLE' });
 }
@@ -40,14 +47,14 @@ revealItems.forEach((item) => observer.observe(item));
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', () => {
     siteHeader.classList.remove('menu-open');
-    if (menuButton) menuButton.setAttribute('aria-expanded', 'false');
+    syncMenuControl(false);
   });
 });
 
 if (menuButton) {
   menuButton.addEventListener('click', () => {
     const isOpen = siteHeader.classList.toggle('menu-open');
-    menuButton.setAttribute('aria-expanded', String(isOpen));
+    syncMenuControl(isOpen);
   });
 }
 
